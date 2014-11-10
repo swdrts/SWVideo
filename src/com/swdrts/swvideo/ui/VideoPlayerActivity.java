@@ -4,6 +4,8 @@ package com.swdrts.swvideo.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -34,6 +36,7 @@ public class VideoPlayerActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         mContext = this;
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
         setContentView(R.layout.activity_player);
         
         mBufferingIndicator = findViewById(R.id.buffering_indicator);
@@ -85,6 +88,12 @@ public class VideoPlayerActivity extends Activity {
         super.onDestroy();
     }
 
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		
+		super.onConfigurationChanged(newConfig);
+	}
     private void parseUrl(Intent intent, String url) {
         switch (intent.getIntExtra(Constant.TYPE_VIDEO, -1)) {
             case Constant.TYPE_YOUKU:
