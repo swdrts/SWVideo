@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_youku">优酷</string>
+    <string name="buffering">缓冲中</string>
+</resources>
