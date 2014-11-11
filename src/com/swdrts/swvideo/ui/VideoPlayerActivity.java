@@ -91,7 +91,6 @@ public class VideoPlayerActivity extends Activity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
-		
 		super.onConfigurationChanged(newConfig);
 	}
     private void parseUrl(Intent intent, String url) {
