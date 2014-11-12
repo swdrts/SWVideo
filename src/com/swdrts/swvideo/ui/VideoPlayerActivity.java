@@ -91,6 +91,7 @@ public class VideoPlayerActivity extends Activity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
+		mVideoView.setVideoLayout(VideoView.VIDEO_LAYOUT_SCALE);
 		super.onConfigurationChanged(newConfig);
 	}
     private void parseUrl(Intent intent, String url) {
