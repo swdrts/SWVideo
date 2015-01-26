@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,6 +17,11 @@ import com.swdrts.swvideo.R;
 import com.swdrts.swvideo.srcparse.VideoSrcCallback;
 import com.swdrts.swvideo.srcparse.Youku;
 import com.swdrts.swvideo.utils.SLog;
+
+import org.apache.http.client.utils.URIUtils;
+
+import java.io.File;
+import java.net.URI;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer.OnCompletionListener;
@@ -36,8 +42,9 @@ public class VideoPlayerActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         mContext = this;
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
         setContentView(R.layout.activity_player);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         
         mBufferingIndicator = findViewById(R.id.buffering_indicator);
         mMediaController = new MediaController(this);
@@ -75,6 +82,8 @@ public class VideoPlayerActivity extends Activity {
             return;
         }
         SLog.debug("video path-->" + mVideoPath);
+        mVideoPath = Uri.decode(mVideoPath);
+        SLog.debug("video path-->" + mVideoPath);
 
         mVideoView.setVideoPath(mVideoPath);
         mVideoView.requestFocus();
@@ -91,6 +100,8 @@ public class VideoPlayerActivity extends Activity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
+		SLog.debug("onConfigurationChanged-->" + newConfig);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
 		mVideoView.setVideoLayout(VideoView.VIDEO_LAYOUT_SCALE);
 		super.onConfigurationChanged(newConfig);
 	}

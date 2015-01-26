@@ -39,7 +39,9 @@
         <activity
             android:name="com.swdrts.swvideo.ui.VideoPlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,6 +53,16 @@
 
                 <data android:mimeType="video/*" />
                 <data android:mimeType="audio/*" />
+                <data android:mimeType="application/mp4"/>
+                <data android:mimeType="*/rmvb"/>
+                <data android:mimeType="*/avi"/>
+                <data android:mimeType="*/mkv"/>
+                <data android:mimeType="*/f4v"/>
+                <data android:mimeType="*/flv"/>
+                <data android:mimeType="*/3gp"/>
+                <data android:mimeType="*/mp4"/>
+                <data android:mimeType="*/mov"/>
+                <data android:mimeType="application/3gpp*"/>
                 <data android:scheme="http" />
                 <data android:scheme="file" />
             </intent-filter>
